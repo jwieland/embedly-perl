@@ -1,6 +1,6 @@
-WWW-Embedly
+WWW::Embedly
 
-Perl API for embed.ly
+Perl API for embed.ly web service
 
 API documetation: http://embed.ly/docs/endpoints/1/oembed
 
@@ -22,17 +22,11 @@ perldoc command.
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Embedly
+    http://metacpan.org/module/WWW::Embedly
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/WWW-Embedly
+Report a bug / Suggest a feature:
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/WWW-Embedly
-
-    Search CPAN
-        http://search.cpan.org/dist/WWW-Embedly/
+    https://github.com/jwieland/embedly-perl/issues
 
 
 LICENSE AND COPYRIGHT

@@ -49,7 +49,7 @@ our $VERSION = '0.01';
 
 The C<WWW::Embedly> is a class implementing for quering the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
 
-You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embedly.com
+You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embed.ly
 
 C<WWW::Embedly> exposes three methods: oembed, preview, objectify.  Each method has additional bits of metadata about the request URL.  oembed method follows the oembed standard documented here L<http://oembed.com/>
 
