@@ -8,15 +8,12 @@ use LWP::UserAgent;
 use JSON::XS;
 #use URI;
 use URI::Escape;
-
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
 
-#use Data::Dumper::Simple;
-
 =head1 NAME
 
-WWW::Embedly - Simple way to intergrate into Embed.ly API
+WWW::Embedly - Simple way to intergrate into Embed.ly web service API
 
 =head1 VERSION
 
@@ -38,6 +35,32 @@ our $VERSION = '0.01';
       $oembed_ref = $embedly->oembed('http://youtu.be/I8CSt7a7gWY');
     };
 
+    if ( catch_all, $e) {
+       warn("embedly api failed: ".$e);
+       return;
+    }
+
+    #made it here, everything good.
+    my $embed_html = $oembed_ref->{html}
+
+=cut
+
+=head1 DESCRIPTION
+
+The C<WWW::Embedly> is a class implementing for quering the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
+
+You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embedly.com
+
+C<WWW::Embedly> exposes three methods: oembed, preview, objectify.  Each method has additional bits of metadata about the request URL.  oembed method follows the oembed standard documented here L<http://oembed.com/>
+
+Refer to L<http://embed.ly> to learn more about the data that is returned for preview L<http://embed.ly/docs/endpoints/1/preview> and objectify L<http://embed.ly/docs/endpoints/2/objectify>
+
+Exception handling is used to expose failures. The Ouch module (:traditional) is used to handle try/catch blocks.  See the Excpetion block below for all the possible catches. Example:
+
+    my $e = try {
+      $oembed_ref = $embedly->oembed('http://youtu.be/I8CSt7a7gWY');
+    };
+
     if ( catch 500, $e) {
        #Server is down
        return;
@@ -51,18 +74,6 @@ our $VERSION = '0.01';
        return;
     }
 
-    #made it here, everything good.
-    my $embed_html = $oembed_ref->{html}
-
-=cut
-
-=head1 DESCRIPTION
-
-The C<WWW::Embedly> is a class implementing for quering the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
-
-C<WWW::Embedly> exposes three methods: oembed, preview, objectify.  Each method has addtional bits of metadata about the request URL.  Refer to L<http://embed.ly> to leanr more about the data that is returned.
-
-Exception handling is used to expose failures. The Ouch module (:traditional) is used to handle try/catch blocks.  See the Excpetion block below for all the possible catches.
 
 C<WWW::Embedly> uses Mouse (lighter version of Moose) to handle its object management.
 
@@ -74,7 +85,7 @@ You must pass the api_key into the contructor:
 
     my $embedly = WWW::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
 
-C<WWW::Embedly> uses LWP::UserAgent to handle its web requests.  You have the ability to pass in your own LWP object in case you have special requirements, like a proxy server.
+C<WWW::Embedly> uses LWP::UserAgent to handle its web requests.  You have the option to pass in your own LWP object in case of special requirements, like a proxy server:
 
     my $ua = LWP::UserAgent->new();
     $ua->proxy('http', 'http://proxy.sn.no:8001/');
@@ -85,7 +96,7 @@ C<WWW::Embedly> uses LWP::UserAgent to handle its web requests.  You have the ab
 
 =head2 Optional Params
 
-C<WWW::Embedly> supports all optional parameters at the time of this writting L<http://embed.ly/docs/endpoints/arguments>.  Refere to the embedly documentation for the complete description.  In most cases you only need to worry about the maxwidth param.  It is highly recommeneded to specify the maxwidth other parameters are not needed in most cases.
+C<WWW::Embedly> supports all optional parameters at the time of this writting L<http://embed.ly/docs/endpoints/arguments>.  Refere to the embedly documentation for the complete description.  In the majority of cases you only need to pay attention to the maxwidth param.  It is highly recommeneded to specify maxwidth since the embed html could overflow the space you provide for it.
 
 =head3 maxwidth
 
@@ -138,6 +149,17 @@ chars is much simpler than words. Embedly will blindly truncate a description to
 =cut
 
 =head1 EXCEPTIONS
+
+All exceptions are thrown in terms of http status codes.  Exceptions from the web service are passed through directly.  For example L<http://embed.ly/docs/endpoints/1/oembed> and scroll down to view the Error Codes.  For most situations you can simply do this:
+
+    my $e = try {
+      $oembed_ref = $embedly->oembed('http://youtu.be/I8CSt7a7gWY');
+    };
+
+    if ( catch_all, $e) {
+       warn("embedly api failed: ".$e);
+       #do something...
+    }
 
 =cut
 
