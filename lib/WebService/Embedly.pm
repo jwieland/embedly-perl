@@ -13,7 +13,7 @@ use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
 
-our $VERSION = '0.002';
+our $VERSION = '0.02';
 
 =head1 NAME
 
@@ -21,7 +21,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.002
+Version 0.02
 
 =cut
 

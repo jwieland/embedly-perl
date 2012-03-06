@@ -2,7 +2,7 @@ NAME
     WebService::Embedly - Perl interface to the Embedly API
 
 VERSION
-    Version 0.002
+    Version 0.02
 
 SYNOPSIS
         use WebService::Embedly;
