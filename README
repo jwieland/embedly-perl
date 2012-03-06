@@ -1,5 +1,5 @@
 NAME
-    WebService::Embedly - Embedly web service API perl integration
+    WebService::Embedly - Perl interface to the Embedly API
 
 VERSION
     Version 0.01
