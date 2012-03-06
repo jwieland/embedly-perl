@@ -13,17 +13,17 @@ use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
 
+our $VERSION = '0.002';
+
 =head1 NAME
 
-WebService::Embedly - Embedly web service API perl integration
+WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.01
+Version 0.002
 
 =cut
-
-our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
