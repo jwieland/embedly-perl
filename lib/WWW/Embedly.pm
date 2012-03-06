@@ -1,11 +1,13 @@
 package WWW::Embedly;
 
-use Mouse;
-use Mouse::Util::TypeConstraints;
-use MouseX::Types::URI;
+use Any::Moose;
+use Any::Moose '::Util::TypeConstraints';
+
+#use Mouse;
+#use Mouse::Util::TypeConstraints;
 
 use LWP::UserAgent;
-use JSON::XS;
+use JSON;
 #use URI;
 use URI::Escape;
 use Ouch qw(:traditional);
@@ -189,7 +191,6 @@ has 'objectify_base_uri' => (
 
 has 'ua' => (
 	     is => 'ro',
-#	     isa => duck_type ['get'],
 	     isa => 'LWP::UserAgent',
 	     required => 1,
 	     default => sub { LWP::UserAgent->new;  },
