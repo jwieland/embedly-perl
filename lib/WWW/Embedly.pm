@@ -15,7 +15,7 @@ use Regexp::Common qw /URI/;
 
 =head1 NAME
 
-WWW::Embedly - Simple way to intergrate into Embed.ly web service API
+WWW::Embedly - Embedly web service API perl integration
 
 =head1 VERSION
 
@@ -49,7 +49,7 @@ our $VERSION = '0.01';
 
 =head1 DESCRIPTION
 
-The C<WWW::Embedly> is a class implementing for quering the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
+The C<WWW::Embedly> is a class implementing for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
 
 You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embed.ly
 
@@ -57,7 +57,7 @@ C<WWW::Embedly> exposes three methods: oembed, preview, objectify.  Each method 
 
 Refer to L<http://embed.ly> to learn more about the data that is returned for preview L<http://embed.ly/docs/endpoints/1/preview> and objectify L<http://embed.ly/docs/endpoints/2/objectify>
 
-Exception handling is used to expose failures. The Ouch module (:traditional) is used to handle try/catch blocks.  See the Excpetion block below for all the possible catches. Example:
+Exception handling is used to expose failures. The Ouch module (:traditional) is used to handle try/catch blocks.  See the Exception block below for all the possible catches. Example:
 
     my $e = try {
       $oembed_ref = $embedly->oembed('http://youtu.be/I8CSt7a7gWY');
@@ -83,7 +83,7 @@ C<WWW::Embedly> uses Mouse (lighter version of Moose) to handle its object manag
 
 =head1 CONSTRUCTOR
 
-You must pass the api_key into the contructor:
+You must pass the api_key into the constructor:
 
     my $embedly = WWW::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
 
@@ -98,7 +98,7 @@ C<WWW::Embedly> uses LWP::UserAgent to handle its web requests.  You have the op
 
 =head2 Optional Params
 
-C<WWW::Embedly> supports all optional parameters at the time of this writting L<http://embed.ly/docs/endpoints/arguments>.  Refere to the embedly documentation for the complete description.  In the majority of cases you only need to pay attention to the maxwidth param.  It is highly recommeneded to specify maxwidth since the embed html could overflow the space you provide for it.
+C<WWW::Embedly> supports all optional parameters at the time of this writing L<http://embed.ly/docs/endpoints/arguments>.  Refer to the embedly documentation for the complete description.  In the majority of cases you only need to pay attention to the maxwidth param.  It is highly recommended to specify maxwidth since the embed html could overflow the space you provide for it.
 
 =head3 maxwidth
 
@@ -292,7 +292,7 @@ has 'chars' => (
 
 
 
-#optional parms
+#optional params
 
 =head1 METHODS
 
@@ -302,7 +302,7 @@ has 'chars' => (
 
 =head2 objectify;
 
-Embed.ly provide three different methods: oembed, preview, objectify depending on the amount of information/access you need each take the same parameters.  However different data is returned depedning on which method used.
+Embed.ly provide three different methods: oembed, preview, objectify depending on the amount of information/access you need each take the same parameters.  However different data is returned depending on which method used.
 
 There are three ways to call each method
 
@@ -321,7 +321,7 @@ Fetch metadata about multiple URLs - call method with array ref of urls
 
 =head3 Extra Information
 
-Fetch metadata about URL(s) and include additional query arguments L<http://embed.ly/docs/endpoints/arguments> - call methos with with hash ref of attributes
+Fetch metadata about URL(s) and include additional query arguments L<http://embed.ly/docs/endpoints/arguments> - call methods with with hash ref of attributes
 
    my $query_ref = {
 
@@ -378,7 +378,7 @@ sub _request {
     my @escaped_urls;
     foreach my $e_url (@{$embed_url}) {
       unless ( $RE{URI}{HTTP}->matches($e_url) ) {
-	throw 400, 'Lookup URL does not look like a properly formatted url: ' . $e_url;
+	throw 400, 'Look-up URL does not look like a properly formatted url: ' . $e_url;
       }
       push @escaped_urls, uri_escape($e_url) ;
     }
@@ -387,7 +387,7 @@ sub _request {
   else {
     #quick check to see if we have a url
     unless ( $RE{URI}{HTTP}->matches($embed_url) ) {
-      throw 400, 'Lookup URL does not look like a properly formatted url: ' . $embed_url;
+      throw 400, 'Look-up URL does not look like a properly formatted url: ' . $embed_url;
     }
     $params{url} = uri_escape($embed_url);
   }
@@ -502,21 +502,9 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * View source / report bugs
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Embedly>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/WWW-Embedly>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/WWW-Embedly>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/WWW-Embedly/>
+L<https://github.com/jwieland/embedly-perl>
 
 =back
 
