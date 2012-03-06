@@ -258,21 +258,21 @@ EOF
 
 #Start Testing
 
-BEGIN { use_ok( 'WWW::Embedly') ; }
+BEGIN { use_ok( 'WebService::Embedly') ; }
 
-use WWW::Embedly;
-can_ok('WWW::Embedly', 'new');
+use WebService::Embedly;
+can_ok('WebService::Embedly', 'new');
 
 my $embedly;
 eval {
-  $embedly = WWW::Embedly->new();
+  $embedly = WebService::Embedly->new();
 };
 ok($@, "Auth_key Needed");
 
 eval {
-  $embedly = WWW::Embedly->new({ api_key => 'test'});
+  $embedly = WebService::Embedly->new({ api_key => 'test'});
 };
-isa_ok($embedly, 'WWW::Embedly');
+isa_ok($embedly, 'WebService::Embedly');
 isa_ok($embedly->ua, 'LWP::UserAgent');
 
 my $ua = LWP::UserAgent->new();
@@ -434,7 +434,7 @@ $mock_ua->map(
 );
 
 #test param passing
-$embedly = WWW::Embedly->new({ api_key => 'test',
+$embedly = WebService::Embedly->new({ api_key => 'test',
 			       maxwidth => 600,
 			     });
 is ($embedly->maxwidth, 600, "maxwidth set");
@@ -588,12 +588,12 @@ if (catch_all $e) {
 
 
 #pass in mock user agent..  IoC testing
-$embedly = WWW::Embedly->new({ api_key => 'test',
+$embedly = WebService::Embedly->new({ api_key => 'test',
 			       maxwidth => 500,
 			       ua => $ua
 			     });
 
-isa_ok($embedly, 'WWW::Embedly');
+isa_ok($embedly, 'WebService::Embedly');
 isa_ok($embedly->ua, 'LWP::UserAgent');
 
 #test oembed method

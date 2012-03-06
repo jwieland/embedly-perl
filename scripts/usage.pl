@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use WWW::Embedly;
+use WebService::Embedly;
 use Ouch qw(:traditional);
 
 use Getopt::Long;
@@ -26,9 +26,9 @@ unless ($key) {
   usage();
 }
 
-my $embedly = WWW::Embedly->new({ api_key => $key,
-				  maxwidth => 500,
-				});
+my $embedly = WebService::Embedly->new({ api_key => $key,
+					 maxwidth => 500,
+				       });
 
 my $embed_data  = $embedly->oembed($url);
 

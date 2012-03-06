@@ -1,4 +1,4 @@
-package WWW::Embedly;
+package WebService::Embedly;
 
 use Any::Moose;
 use Any::Moose '::Util::TypeConstraints';
@@ -15,7 +15,7 @@ use Regexp::Common qw /URI/;
 
 =head1 NAME
 
-WWW::Embedly - Embedly web service API perl integration
+WebService::Embedly - Embedly web service API perl integration
 
 =head1 VERSION
 
@@ -27,10 +27,10 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-    use WWW::Embedly;
+    use WebService::Embedly;
     use Ouch qw(:traditional);
 
-    my $embedly = WWW::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
+    my $embedly = WebService::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
 
     my $oembed_ref;
     my $e = try {
@@ -49,11 +49,11 @@ our $VERSION = '0.01';
 
 =head1 DESCRIPTION
 
-The C<WWW::Embedly> is a class implementing for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
+The C<WebService::Embedly> is a class implementing for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
 
 You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embed.ly
 
-C<WWW::Embedly> exposes three methods: oembed, preview, objectify.  Each method has additional bits of metadata about the request URL.  oembed method follows the oembed standard documented here L<http://oembed.com/>
+C<WebService::Embedly> exposes three methods: oembed, preview, objectify.  Each method has additional bits of metadata about the request URL.  oembed method follows the oembed standard documented here L<http://oembed.com/>
 
 Refer to L<http://embed.ly> to learn more about the data that is returned for preview L<http://embed.ly/docs/endpoints/1/preview> and objectify L<http://embed.ly/docs/endpoints/2/objectify>
 
@@ -77,7 +77,7 @@ Exception handling is used to expose failures. The Ouch module (:traditional) is
     }
 
 
-C<WWW::Embedly> uses Mouse (lighter version of Moose) to handle its object management.
+C<WebService::Embedly> uses Mouse (lighter version of Moose) to handle its object management.
 
 =cut
 
@@ -85,20 +85,20 @@ C<WWW::Embedly> uses Mouse (lighter version of Moose) to handle its object manag
 
 You must pass the api_key into the constructor:
 
-    my $embedly = WWW::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
+    my $embedly = WebService::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
 
-C<WWW::Embedly> uses LWP::UserAgent to handle its web requests.  You have the option to pass in your own LWP object in case of special requirements, like a proxy server:
+C<WebService::Embedly> uses LWP::UserAgent to handle its web requests.  You have the option to pass in your own LWP object in case of special requirements, like a proxy server:
 
     my $ua = LWP::UserAgent->new();
     $ua->proxy('http', 'http://proxy.sn.no:8001/');
 
-    my $embedly = WWW::Embedly->new({ api_key => 'get_your_key_at_embed.ly',
+    my $embedly = WebService::Embedly->new({ api_key => 'get_your_key_at_embed.ly',
                                       ua => $ua
                                     });
 
 =head2 Optional Params
 
-C<WWW::Embedly> supports all optional parameters at the time of this writing L<http://embed.ly/docs/endpoints/arguments>.  Refer to the embedly documentation for the complete description.  In the majority of cases you only need to pay attention to the maxwidth param.  It is highly recommended to specify maxwidth since the embed html could overflow the space you provide for it.
+C<WebService::Embedly> supports all optional parameters at the time of this writing L<http://embed.ly/docs/endpoints/arguments>.  Refer to the embedly documentation for the complete description.  In the majority of cases you only need to pay attention to the maxwidth param.  It is highly recommended to specify maxwidth since the embed html could overflow the space you provide for it.
 
 =head3 maxwidth
 
@@ -485,7 +485,7 @@ Jason Wieland, C<< <jwieland at cpan.org> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-www-embedly at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Embedly>.  I will be notified, and then you'll
+the web interface at L<https://github.com/jwieland/embedly-perl/issues>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -495,7 +495,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc WWW::Embedly
+    perldoc WebService::Embedly
 
 
 You can also look for information at:
@@ -526,4 +526,4 @@ See L<http://dev.perl.org/licenses/> for more information.
 =cut
 __PACKAGE__->meta->make_immutable();
 
-1; # End of WWW::Embedly
+1; # End of WebService::Embedly
