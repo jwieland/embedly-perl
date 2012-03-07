@@ -12,8 +12,7 @@ use JSON;
 use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
-
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -21,7 +20,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
