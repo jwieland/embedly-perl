@@ -12,7 +12,7 @@ use JSON;
 use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 NAME
 
@@ -20,7 +20,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -29,7 +29,8 @@ Version 0.03
     use WebService::Embedly;
     use Ouch qw(:traditional);
 
-    my $embedly = WebService::Embedly->new({ api_key => 'get_your_key_at_embed.ly'});
+    my $embedly = WebService::Embedly->new({ api_key => 'get_your_key_at_embed.ly',
+   					     maxwidth => 500 });
 
     my $oembed_ref;
     my $e = try {
@@ -42,7 +43,7 @@ Version 0.03
     }
 
     #made it here, everything good.
-    my $embed_html = $oembed_ref->{html}
+    my $embed_html = $oembed_ref->{html};
 
 =cut
 
@@ -197,9 +198,9 @@ has 'ua' => (
 
 has 'json' => (
 	     is => 'ro',
-	     isa => 'JSON::XS',
+	     isa => 'JSON',
 	     required => 1,
-	     default => sub { JSON::XS->new->utf8; },
+	     default => sub { JSON->new->utf8; },
 );
 
 has 'maxwidth' => (

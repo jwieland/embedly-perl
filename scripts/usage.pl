@@ -12,6 +12,7 @@ use Data::Dumper;
 my $key;
 my $help;
 my $url = 'http://www.youtube.com/watch?v=mzhVAJOHgQo';
+
 GetOptions ("apikey=s" => \$key,
 	    "help" => \$help,
 	    "url=s" => \$url,
@@ -29,6 +30,7 @@ unless ($key) {
 my $embedly = WebService::Embedly->new({ api_key => $key,
 					 maxwidth => 500,
 				       });
+
 
 my $embed_data  = $embedly->oembed($url);
 
