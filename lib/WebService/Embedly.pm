@@ -377,7 +377,7 @@ sub _request {
 
     my @escaped_urls;
     foreach my $e_url (@{$embed_url}) {
-      unless ( $RE{URI}{HTTP}->matches($e_url) ) {
+      unless ( $RE{URI}{HTTP}->{-scheme => qr/https?/}->matches($e_url) ) {
 	throw 400, 'Look-up URL does not look like a properly formatted url: ' . $e_url;
       }
       push @escaped_urls, uri_escape($e_url) ;
@@ -386,7 +386,7 @@ sub _request {
   }
   else {
     #quick check to see if we have a url
-    unless ( $RE{URI}{HTTP}->matches($embed_url) ) {
+    unless ( $RE{URI}{HTTP}->{-scheme => qr/https?/}->matches($embed_url) ) {
       throw 400, 'Look-up URL does not look like a properly formatted url: ' . $embed_url;
     }
     $params{url} = uri_escape($embed_url);
