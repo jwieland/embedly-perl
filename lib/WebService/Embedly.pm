@@ -380,7 +380,7 @@ sub _request {
       unless ( $RE{URI}{HTTP}->{-scheme => qr/https?/}->matches($e_url) ) {
 	throw 400, 'Look-up URL does not look like a properly formatted url: ' . $e_url;
       }
-      push @escaped_urls, uri_escape($e_url) ;
+      push @escaped_urls, uri_escape_utf8($e_url) ;
     }
     $params{urls} = join (',', @escaped_urls);
   }
@@ -389,7 +389,7 @@ sub _request {
     unless ( $RE{URI}{HTTP}->{-scheme => qr/https?/}->matches($embed_url) ) {
       throw 400, 'Look-up URL does not look like a properly formatted url: ' . $embed_url;
     }
-    $params{url} = uri_escape($embed_url);
+    $params{url} = uri_escape_utf8($embed_url);
   }
 
 #  can't use query_form because embedly can't handle full application/x-www-form-urlencoded for multi urls (the comma between urls needs to stay a comma and not escaped to %2C) boo
@@ -484,12 +484,7 @@ Jason Wieland, C<< <jwieland at cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-www-embedly at rt.cpan.org>, or through
-the web interface at L<https://github.com/jwieland/embedly-perl/issues>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests through the web interface at L<https://github.com/jwieland/embedly-perl/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -497,8 +492,7 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WebService::Embedly
 
-
-You can also look for information at:
+You can also look for information at: https://github.com/jwieland/embedly-perl
 
 =over 4
 
@@ -522,8 +516,8 @@ by the Free Software Foundation; or the Artistic License.
 
 See L<http://dev.perl.org/licenses/> for more information.
 
-
 =cut
+
 __PACKAGE__->meta->make_immutable();
 
 1; # End of WebService::Embedly
