@@ -29,7 +29,7 @@ Version 0.04
 
 =head1 DESCRIPTION
 
-The C<WebService::Embedly> is a class implementation for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
+The C<WebService::Embedly> is a class for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
 
 You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embed.ly
 
