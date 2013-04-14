@@ -4,7 +4,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.04
+Version 0.09
 
 =head1 SYNOPSIS
 
@@ -29,7 +29,7 @@ Version 0.04
 
 =head1 DESCRIPTION
 
-The C<WebService::Embedly> is a class for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
+The C<WebService::Embedly> is a class implementing for querying the Embed.ly web service.  Prior to using this module you should go to L<http://embed.ly> and sign up for an api_key.
 
 You can quickly try out the API by executing: ./sample/usage.pl --apikey you_api_key_from_embed.ly
 
@@ -179,12 +179,7 @@ Jason Wieland, C<< <jwieland at cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-www-embedly at rt.cpan.org>, or through
-the web interface at L<https://github.com/jwieland/embedly-perl/issues>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests through the web interface at L<https://github.com/jwieland/embedly-perl/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -192,8 +187,7 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WebService::Embedly
 
-
-You can also look for information at:
+You can also look for information at: https://github.com/jwieland/embedly-perl
 
 =over 4
 
@@ -216,5 +210,4 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See L<http://dev.perl.org/licenses/> for more information.
-
 

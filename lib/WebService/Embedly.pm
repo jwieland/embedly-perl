@@ -12,7 +12,7 @@ use JSON;
 use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
-our $VERSION = '0.04';
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -20,7 +20,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.04
+Version 0.09
 
 =cut
 
@@ -193,7 +193,10 @@ has 'ua' => (
 	     is => 'ro',
 	     isa => 'LWP::UserAgent',
 	     required => 1,
-	     default => sub { LWP::UserAgent->new;  },
+	     default => sub { my $ua = LWP::UserAgent->new;
+			      $ua->timeout(10);
+			      return $ua;
+			    },
 );
 
 has 'json' => (
