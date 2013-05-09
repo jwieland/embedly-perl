@@ -14,6 +14,8 @@ use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
 our $VERSION = '0.09';
 
+=encoding utf8
+
 =head1 NAME
 
 WebService::Embedly - Perl interface to the Embedly API
@@ -130,7 +132,7 @@ By default Embedly does not return script embeds for jsonp requests. They just d
 
 =head3 nostyle (default: false)
 
-There are a number of embeds that Embedly has created including Amazon.com, Foursquare, and Formspring. These all have <style> elements and inline styles associated with them that make the embeds look good. Accepted values: (true, false)
+There are a number of embeds that Embedly has created including Amazon.com, Foursquare, and Formspring. These all have style elements and inline styles associated with them that make the embeds look good. Accepted values: (true, false)
 
 =head3 autoplay (default: false)
 
@@ -483,7 +485,7 @@ sub _request {
 
 =head1 AUTHOR
 
-Jason Wieland, C<< <jwieland at cpan.org> >>
+Jason Wieland C<jwieland@cpan.org>
 
 =head1 BUGS
 
