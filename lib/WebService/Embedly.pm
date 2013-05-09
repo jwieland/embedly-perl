@@ -12,7 +12,7 @@ use JSON;
 use URI::Escape;
 use Ouch qw(:traditional);
 use Regexp::Common qw /URI/;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 =encoding utf8
 
@@ -22,7 +22,7 @@ WebService::Embedly - Perl interface to the Embedly API
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
