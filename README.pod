@@ -94,7 +94,7 @@ Will scale embeds type rich and video to the exact width that a developer specif
 
 =head3 format (default: json)
 
-The response format – Accepted values: (xml, json)
+The response format - Accepted values: (xml, json)
 
 =head3 callback
 
@@ -177,7 +177,7 @@ Can throw an exception (ouch) so wrap in an eval or use Ouch module and refer to
 
 =head1 AUTHOR
 
-Jason Wieland C<< <jwieland@cpan.org> >>
+Jason Wieland C<jwieland@cpan.org>
 
 =head1 BUGS
 

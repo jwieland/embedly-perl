@@ -116,7 +116,7 @@ Will scale embeds type rich and video to the exact width that a developer specif
 
 =head3 format (default: json)
 
-The response format – Accepted values: (xml, json)
+The response format - Accepted values: (xml, json)
 
 =head3 callback
 
